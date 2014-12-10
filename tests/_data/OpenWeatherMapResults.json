@@ -1,0 +1,44 @@
+{
+
+	"coord": {
+		"lon": -1.55,
+		"lat": 53.8
+	},
+	"sys": {
+		"type": 1,
+		"id": 5101,
+		"message": 0.0204,
+		"country": "GB",
+		"sunrise": 1418199186,
+		"sunset": 1418226315
+	},
+	"weather": [
+		{
+			"id": 521,
+			"main": "Rain",
+			"description": "shower rain",
+			"icon": "09n"
+		}
+	],
+	"base": "cmc stations",
+	"main": {
+		"temp": 277.97,
+		"pressure": 1004,
+		"humidity": 93,
+		"temp_min": 276.15,
+		"temp_max": 279.15
+	},
+	"wind": {
+		"speed": 11.3,
+		"deg": 250,
+		"gust": 21.1
+	},
+	"clouds": {
+		"all": 75
+	},
+	"dt": 1418235600,
+	"id": 2644688,
+	"name": "Leeds",
+	"cod": 200
+
+}
