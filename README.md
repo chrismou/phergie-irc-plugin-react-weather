@@ -1,8 +1,8 @@
 # Weather plugin for [Phergie](http://github.com/phergie/phergie-irc-bot-react/)
 
-[Phergie](http://github.com/phergie/phergie-irc-bot-react/) plugin for Return weather information for a given location.
+[Phergie](http://github.com/phergie/phergie-irc-bot-react/) plugin for returning weather information for a given location.
 
-[![Build Status](https://secure.travis-ci.org/chrismou/phergie-irc-plugin-react-weather.png?branch=master)](http://travis-ci.org/chrismou/phergie-irc-plugin-react-weather)
+[![Build Status](https://travis-ci.org/chrismou/phergie-irc-plugin-react-weather.svg)](https://travis-ci.org/chrismou/phergie-irc-plugin-react-weather)
 
 ## Install
 
@@ -21,10 +21,15 @@ See Phergie documentation for more information on
 
 ## Configuration
 
+The default provider is OpenWeatherSearch, which requires a free api key to use (which you can get from 
+[here](http://openweathermap.org/appid).
+ 
+Once you've got your appid, you can set up the plugin as follows:
+
 ```php
 new \Chrismou\Phergie\Plugin\Weather\Plugin(array(
 
-
+    "config" => array("appid" => "YOUR_APP_ID")
 
 ))
 ```

@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * OpenWeatherMap provider for the Weather plugin for Phergie
+ *
+ * @link https://github.com/chrismou/phergie-irc-plugin-react-weather for the canonical source repository
+ * @copyright Copyright (c) 2014 Chris Chrisostomou (http://mou.me)
+ * @license http://phergie.org/license New BSD License
+ * @package Chrismou\Phergie\Plugin\Weather
+ */
+
 namespace Chrismou\Phergie\Plugin\Weather\Provider;
 
 use Phergie\Irc\Plugin\React\Command\CommandEvent as Event;
@@ -79,6 +88,14 @@ class OpenWeatherMap implements WeatherProviderInterface
         }
     }
 
+    /**
+     * Return an array of lines to send back to IRC when there are no results
+     *
+     * @param \Phergie\Irc\Plugin\React\Command\CommandEvent $event
+     * @param string $apiResponse
+     *
+     * @return array
+     */
     public function getNoResultsLines(Event $event, $apiResponse)
     {
         return array('No results for this query');

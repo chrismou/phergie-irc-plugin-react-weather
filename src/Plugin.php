@@ -1,6 +1,6 @@
 <?php
 /**
- * Phergie plugin for Return weather information for a given location (https://github.com/chrismou/phergie-irc-plugin-react-weather)
+ * Phergie plugin for returning weather information for a given location (https://github.com/chrismou/phergie-irc-plugin-react-weather)
  *
  * @link https://github.com/chrismou/phergie-irc-plugin-react-weather for the canonical source repository
  * @copyright Copyright (c) 2014 Chris Chrisostomou (http://mou.me)
@@ -33,8 +33,8 @@ class Plugin extends AbstractPlugin
      * Accepts plugin configuration.
      *
      * Supported keys:
-     *
-     *
+     *      provider
+     *      config
      *
      * @param array $config
      */
@@ -90,7 +90,7 @@ class Plugin extends AbstractPlugin
      *
      * @param \Phergie\Irc\Plugin\React\Command\CommandEvent $event
      * @param \Phergie\Irc\Bot\React\EventQueueInterface $queue
-     * @param \Chrismou\Phergie\Plugin\Weather\Provider\WeatherProviderInterface $provider
+     *
      * @return \WyriHaximus\Phergie\Plugin\Http\Request
      */
     protected function getApiRequest(Event $event, Queue $queue)

@@ -1,6 +1,6 @@
 <?php
 /**
- * interface for various providers for the Weather plugin for Phergie (https://github.com/phergie/phergie-irc-bot-react)
+ * Interface for Weather plugin providers
  *
  * @link https://github.com/chrismou/phergie-irc-plugin-react-weather for the canonical source repository
  * @copyright Copyright (c) 2014 Chris Chrisostomou (http://mou.me)
