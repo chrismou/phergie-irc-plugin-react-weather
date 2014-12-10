@@ -1,4 +1,4 @@
-# chrismou/phergie-irc-plugin-react-weather
+# Weather plugin for [Phergie](http://github.com/phergie/phergie-irc-bot-react/)
 
 [Phergie](http://github.com/phergie/phergie-irc-bot-react/) plugin for Return weather information for a given location.
 

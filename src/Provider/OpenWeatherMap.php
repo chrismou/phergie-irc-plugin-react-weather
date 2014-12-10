@@ -63,8 +63,20 @@ class OpenWeatherMap implements WeatherProviderInterface
     public function getSuccessLines(Event $event, $apiResponse)
     {
         $data = json_decode($apiResponse);
-        if (isset($data->name)) return array ("Response");
-        else return $this->getNoResultsLines($event, $apiResponse);
+        if (isset($data->name) && $data->name) {
+            return array(sprintf("%s, %s | %s | Temp: %dC | Humidity: %s%% | Sunrise: %s | Sunset: %s",
+                $data->name,
+                $data->sys->country,
+                $data->weather[0]->main,
+                round($data->main->temp-273.15),
+                $data->main->humidity,
+                date("H:i:s", $data->sys->sunrise),
+                date("H:i:s", $data->sys->sunset)
+            ));
+
+        } else {
+            return $this->getNoResultsLines($event, $apiResponse);
+        }
     }
 
     public function getNoResultsLines(Event $event, $apiResponse)
