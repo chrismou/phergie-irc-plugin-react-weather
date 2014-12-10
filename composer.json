@@ -1,6 +1,6 @@
 {
     "name": "chrismou/phergie-irc-plugin-react-weather",
-    "description": "Phergie plugin that returns weather information for a given location",
+    "description": "Phergie plugin for returning weather information for a given location",
     "keywords": [ "phergie", "irc", "bot", "plugin" ],
     "license": "BSD-2-Clause",
     "support": {
