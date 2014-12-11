@@ -30,19 +30,7 @@ class OpenWeatherMap implements WeatherProviderInterface
     }
 
     /**
-     * Validate the provided parameters
-     *
-     * @param array $params
-     *
-     * @return true|false
-     */
-    public function validateParams(array $params)
-    {
-        return (count($params)) ? true : false;
-    }
-
-    /**
-     * Get the url for the API request
+     * Return the url for the API request
      *
      * @param \Phergie\Irc\Plugin\React\Command\CommandEvent $event
      *
@@ -62,7 +50,7 @@ class OpenWeatherMap implements WeatherProviderInterface
     }
 
     /**
-     * Process the response (when the request is successful) and return an array of lines to send back to IRC
+     * Returns an array of lines to send back to IRC when the http request is successful
      *
      * @param \Phergie\Irc\Plugin\React\Command\CommandEvent $event
      * @param string $apiResponse
@@ -111,20 +99,6 @@ class OpenWeatherMap implements WeatherProviderInterface
      */
     public function getRejectLines(Event $event, $apiError)
     {
-        return array('something went wrong... ಠ_ಠ');
-    }
-
-    /**
-     * Returns an array of lines for the help response
-     *
-     * @return array
-     */
-    public function getHelpLines()
-    {
-        return array(
-            'Usage: weather [location]',
-            '[location] - address, city, postcode, etc',
-            'Instructs the bot to query OpenWeatherMap for weather info for the specified location'
-        );
+        return array('Something went wrong... ಠ_ಠ');
     }
 }

@@ -95,7 +95,7 @@ class PluginTest extends \PHPUnit_Framework_TestCase
 
         $this->plugin->handleCommandHelp($this->event, $this->queue);
 
-        $helpLines = $this->plugin->getProvider()->getHelpLines();
+        $helpLines = $this->plugin->getHelpLines();
         $this->assertInternalType('array', $helpLines);
 
         foreach ((array)$helpLines as $responseLine) {
