@@ -13,12 +13,12 @@ namespace Chrismou\Phergie\Plugin\Weather\Provider;
 
 use Phergie\Irc\Plugin\React\Command\CommandEvent as Event;
 
-class OpenWeatherMap implements WeatherProviderInterface
+class Wunderground implements WeatherProviderInterface
 {
     /**
      * @var string
      */
-    protected $apiUrl = 'http://api.openweathermap.org/data/2.5/weather';
+    protected $apiUrl = 'http://api.wunderground.com/api/';
 
     /**
      * @var string
@@ -39,14 +39,15 @@ class OpenWeatherMap implements WeatherProviderInterface
     public function getApiRequestUrl(Event $event)
     {
         $params = $event->getCustomParams();
-        $query = trim(implode(" ", $params));
 
-        $querystringParams = array(
-            'q' => $query,
-            'appid' => $this->appId
-        );
-
-        return sprintf("%s?%s", $this->apiUrl, http_build_query($querystringParams));
+        // TODO: This is awful. Needs a rethink
+        // Final parameter should be the country
+        $country = $params[count($params)-1];
+        // Remove the final paramater
+        unset($params[count($params)-1]);
+        // Merge the remainder of the supplied params and remove disallowed punctuation
+        $place = trim(implode("_", preg_replace('/[^\da-z\ ]/i', '', $params)));
+        return sprintf("%s/%s/conditions/q/%s/%s.json", $this->apiUrl, $this->appId, $country, $place);
     }
 
     /**
@@ -59,7 +60,7 @@ class OpenWeatherMap implements WeatherProviderInterface
      */
     public function validateParams(array $params)
     {
-        return (count($params)) ? true : false;
+        return (count($params)>=2) ? true : false;
     }
 
     /**
@@ -73,17 +74,15 @@ class OpenWeatherMap implements WeatherProviderInterface
     public function getSuccessLines(Event $event, $apiResponse)
     {
         $data = json_decode($apiResponse);
-        if (isset($data->name) && $data->name) {
-            return array(sprintf("%s, %s | %s | Temp: %dC | Humidity: %s%% | Sunrise: %s | Sunset: %s",
-                $data->name,
-                $data->sys->country,
-                $data->weather[0]->main,
-                round($data->main->temp-273.15),
-                $data->main->humidity,
-                date("H:i:s", $data->sys->sunrise),
-                date("H:i:s", $data->sys->sunset)
+        if (isset($data->current_observation)) {
+            $data = $data->current_observation;
+            return array(sprintf("%s | %s | Temp: %dC | Humidity: %s | %s",
+                $data->display_location->full,
+                $data->weather,
+                round($data->temp_c),
+                $data->relative_humidity,
+                $data->forecast_url
             ));
-
         } else {
             return $this->getNoResultsLines($event, $apiResponse);
         }
@@ -124,9 +123,9 @@ class OpenWeatherMap implements WeatherProviderInterface
     {
         return array(
             'Usage: weather [place] [country]',
-            '[place] - address, town, city, zip code, etc. Can be multiple words',
-            '[country] (optional) - can be a full name or country code (uk, us, etc)',
-            'Instructs the bot to query OpenWeatherMap for weather info for the specified location'
+            '[place] - town, city, etc. Can be multiple words',
+            '[country] - full name or country code (uk, us, etc)',
+            'Instructs the bot to query Weather Undergound for info for the specified location'
         );
     }
 }
