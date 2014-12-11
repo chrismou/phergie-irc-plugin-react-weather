@@ -18,7 +18,7 @@ class Wunderground implements WeatherProviderInterface
     /**
      * @var string
      */
-    protected $apiUrl = 'http://api.wunderground.com/api/';
+    protected $apiUrl = 'http://api.wunderground.com/api';
 
     /**
      * @var string

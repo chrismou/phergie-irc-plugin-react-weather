@@ -54,12 +54,24 @@ class PluginTest extends \PHPUnit_Framework_TestCase
 
     public function testOpenWeatherMap() {
         $this->plugin = $this->getPlugin(array(
-            "provider" => new \Chrismou\Phergie\Plugin\Weather\Provider\OpenWeatherMap,
-            "config" => array("appId" => "")
+            'provider' => 'Chrismou\\Phergie\\Plugin\\Weather\\Provider\\OpenWeatherMap',
+            'config' => array('appId' => '')
         ));
         $httpConfig = $this->doCommandTest();
         $this->doResolveTest(file_get_contents(__DIR__.'/_data/OpenWeatherMapResults.json'), $httpConfig);
         $this->doResolveNoResultsTest(file_get_contents(__DIR__.'/_data/OpenWeatherMapNoResults.json'), $httpConfig);
+        $this->doRejectTest($httpConfig);
+        $this->doCommandHelpTest();
+    }
+
+    public function testWunderground() {
+        $this->plugin = $this->getPlugin(array(
+            "provider" => 'Chrismou\\Phergie\\Plugin\\Weather\\Provider\\Wunderground',
+            "config" => array("appId" => '')
+        ));
+        $httpConfig = $this->doCommandTest();
+        $this->doResolveTest(file_get_contents(__DIR__.'/_data/WundergroundResults.json'), $httpConfig);
+        $this->doResolveNoResultsTest(file_get_contents(__DIR__.'/_data/WundergroundNoResults.json'), $httpConfig);
         $this->doRejectTest($httpConfig);
         $this->doCommandHelpTest();
     }
@@ -74,7 +86,7 @@ class PluginTest extends \PHPUnit_Framework_TestCase
      */
     protected function doCommandTest()
     {
-        Phake::when($this->event)->getCustomParams()->thenReturn(array("Leeds,UK"));
+        Phake::when($this->event)->getCustomParams()->thenReturn(array("Leeds", "UK"));
         $this->plugin->handleCommand($this->event, $this->queue);
         Phake::verify($this->plugin->getEventEmitter())->emit('http.request', Phake::capture($httpConfig));
         $this->verifyHttpConfig($httpConfig);
@@ -91,7 +103,7 @@ class PluginTest extends \PHPUnit_Framework_TestCase
     {
         Phake::when($this->event)->getSource()->thenReturn('#channel');
         Phake::when($this->event)->getCommand()->thenReturn('PRIVMSG');
-        Phake::when($this->event)->getCustomParams()->thenReturn(array("Leeds,UK"));
+        Phake::when($this->event)->getCustomParams()->thenReturn(array("Leeds", "UK"));
 
         $this->plugin->handleCommandHelp($this->event, $this->queue);
 
@@ -182,7 +194,7 @@ class PluginTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests handCommand() is doing what it's supposed to
+     * Verify the http object looks like what we're expecting
      *
      * @param array $httpConfig
      * @param string $provider

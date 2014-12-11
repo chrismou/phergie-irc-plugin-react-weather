@@ -1,0 +1,112 @@
+{
+
+	"response":
+
+	{
+
+		"version": "0.1",
+		"termsofService": "http://www.wunderground.com/weather/api/d/terms.html",
+		"features":
+
+		{
+			"conditions": 1
+		}
+
+	},
+	"current_observation":
+	{
+
+		"image":
+
+		{
+
+			"url": "http://icons.wxug.com/graphics/wu2/logo_130x80.png",
+			"title": "Weather Underground",
+			"link": "http://www.wunderground.com"
+
+		},
+		"display_location":
+		{
+
+			"full": "Leeds, United Kingdom",
+			"city": "Leeds",
+			"state": "",
+			"state_name": "United Kingdom",
+			"country": "UK",
+			"country_iso3166": "GB",
+			"zip": "00000",
+			"magic": "1",
+			"wmo": "03347",
+			"latitude": "53.79999924",
+			"longitude": "-1.54999995",
+			"elevation": "47.00000000"
+
+		},
+		"observation_location":
+
+		{
+			"full": "Osmondthorpe, Leeds, WEST YORKSHIRE",
+			"city": "Osmondthorpe, Leeds",
+			"state": "WEST YORKSHIRE",
+			"country": "United Kingdom",
+			"country_iso3166": "GB",
+			"latitude": "53.795734",
+			"longitude": "-1.501962",
+			"elevation": "195 ft"
+		},
+		"estimated": { },
+		"station_id": "IWESTYOR8",
+		"observation_time": "Last Updated on December 11, 3:20 PM GMT",
+		"observation_time_rfc822": "Thu, 11 Dec 2014 15:20:06 +0000",
+		"observation_epoch": "1418311206",
+		"local_time_rfc822": "Thu, 11 Dec 2014 15:29:45 +0000",
+		"local_epoch": "1418311785",
+		"local_tz_short": "GMT",
+		"local_tz_long": "Europe/London",
+		"local_tz_offset": "+0000",
+		"weather": "Scattered Clouds",
+		"temperature_string": "40.9 F (4.9 C)",
+		"temp_f": 40.9,
+		"temp_c": 4.9,
+		"relative_humidity": "79%",
+		"wind_string": "From the WSW at 8.0 MPH Gusting to 8.0 MPH",
+		"wind_dir": "WSW",
+		"wind_degrees": 255,
+		"wind_mph": 8,
+		"wind_gust_mph": "8.0",
+		"wind_kph": 12.9,
+		"wind_gust_kph": "12.9",
+		"pressure_mb": "1000",
+		"pressure_in": "29.53",
+		"pressure_trend": "0",
+		"dewpoint_string": "35 F (2 C)",
+		"dewpoint_f": 35,
+		"dewpoint_c": 2,
+		"heat_index_string": "NA",
+		"heat_index_f": "NA",
+		"heat_index_c": "NA",
+		"windchill_string": "36 F (2 C)",
+		"windchill_f": "36",
+		"windchill_c": "2",
+		"feelslike_string": "36 F (2 C)",
+		"feelslike_f": "36",
+		"feelslike_c": "2",
+		"visibility_mi": "6.2",
+		"visibility_km": "10.0",
+		"solarradiation": "--",
+		"UV": "0",
+		"precip_1hr_string": "0.00 in ( 0 mm)",
+		"precip_1hr_in": "0.00",
+		"precip_1hr_metric": " 0",
+		"precip_today_string": "0.13 in (3 mm)",
+		"precip_today_in": "0.13",
+		"precip_today_metric": "3",
+		"icon": "partlycloudy",
+		"icon_url": "http://icons.wxug.com/i/c/k/partlycloudy.gif",
+		"forecast_url": "http://www.wunderground.com/global/stations/03347.html",
+		"history_url": "http://www.wunderground.com/weatherstation/WXDailyHistory.asp?ID=IWESTYOR8",
+		"ob_url": "http://www.wunderground.com/cgi-bin/findweather/getForecast?query=53.795734,-1.501962",
+		"nowcast": ""
+	}
+
+}
