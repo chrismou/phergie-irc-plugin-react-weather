@@ -24,6 +24,7 @@ See Phergie documentation for more information on
 The default provider is OpenWeatherSearch, which requires a free api key to use (which you can get from 
 [here](http://openweathermap.org/appid).
 
+To use OpenWeatherMap, you only need to provide the API key:
 
 ```php
 new \Chrismou\Phergie\Plugin\Weather\Plugin(array(
@@ -34,7 +35,7 @@ new \Chrismou\Phergie\Plugin\Weather\Plugin(array(
 ```
 
 There's also a Weather Underground provider included. It's a bit of a work in progress - it currently requires a city and country and tends to not find 
-the location as often - but it does work.  If you think you can improve it, feel free to fork/fix/pull request.  Or send me the info. EIther way. :-)
+the location as often - but it works.  If you think you can improve it, feel free to fork/fix/pull request or send me your suggestions and we'll take it from there. :-)
 
 Weather underground also requires an API key, which can you get for free from [here](http://www.wunderground.com/weather/api/)
 
@@ -48,9 +49,9 @@ new \Chrismou\Phergie\Plugin\Weather\Plugin(array(
 ```
 Or you can alway write your own! Feel free to fork, improve, and put in a pull request.
 
-### Current request limits:
-**Open Weather Map**: 4,000,000/day (max. 3000/min)
-**Weather Underground**: 500/day (max. 10/min)
+#### Current request limits:
+* **Open Weather Map**: 4,000,000/day (max. 3000/min)
+* **Weather Underground**: 500/day (max. 10/min)
 
 ## Tests
 

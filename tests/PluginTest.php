@@ -52,6 +52,9 @@ class PluginTest extends \PHPUnit_Framework_TestCase
         $this->assertInternalType('array', $this->getPlugin()->getSubscribedEvents());
     }
 
+    /**
+     * Tests the end to end process using the OpenWeatherMap provider
+     */
     public function testOpenWeatherMap() {
         $this->plugin = $this->getPlugin(array(
             'provider' => 'Chrismou\\Phergie\\Plugin\\Weather\\Provider\\OpenWeatherMap',
@@ -64,6 +67,9 @@ class PluginTest extends \PHPUnit_Framework_TestCase
         $this->doCommandHelpTest();
     }
 
+    /**
+     * Tests the end to end process using the OpenWeatherMap provider
+     */
     public function testWunderground() {
         $this->plugin = $this->getPlugin(array(
             "provider" => 'Chrismou\\Phergie\\Plugin\\Weather\\Provider\\Wunderground',
@@ -78,10 +84,6 @@ class PluginTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Tests handCommand() is doing what it's supposed to
-     *
-     * @param string $command
-     * @param array $params
-     *
      * @return array $httpConfig
      */
     protected function doCommandTest()
@@ -96,8 +98,6 @@ class PluginTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Tests handCommandHelp() is doing what it's supposed to
-     *
-     * @param array \Chrismou\Phergie\Plugin\Weather\Plugin
      */
     protected function doCommandHelpTest()
     {
@@ -146,7 +146,6 @@ class PluginTest extends \PHPUnit_Framework_TestCase
     /**
      * Tests handCommand() handles rejectCallback correctly
      *
-     * @param string $command
      * @param array $httpConfig
      */
     protected function doRejectTest(array $httpConfig)
@@ -160,8 +159,6 @@ class PluginTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Sets mocks pre-callback
-     *
-     * @param string $command
      */
 
     protected function doPreCallbackSetup()
@@ -174,8 +171,8 @@ class PluginTest extends \PHPUnit_Framework_TestCase
      * Sets mocks in preparation for a callback test
      *
      * @param string $data
-     * @param string $command
-     * @param string $command
+     * @param callable $callback
+     * @param array $responseLines
      */
 
     protected function doPostCallbackTests($data, $callback, $responseLines)
@@ -183,6 +180,8 @@ class PluginTest extends \PHPUnit_Framework_TestCase
         // Test we've had an array back and it has at least one response message
         $this->assertInternalType('array', $responseLines);
         $this->assertArrayHasKey(0, $responseLines);
+
+        $this->assertInternalType('callable', $callback);
 
         // Run the resolveCallback callback
         $callback($data, $this->event, $this->queue);
@@ -197,7 +196,6 @@ class PluginTest extends \PHPUnit_Framework_TestCase
      * Verify the http object looks like what we're expecting
      *
      * @param array $httpConfig
-     * @param string $provider
      */
     protected function verifyHttpConfig(array $httpConfig)
     {
