@@ -34,6 +34,10 @@ new \Chrismou\Phergie\Plugin\Weather\Plugin(array(
 ))
 ```
 
+Current request limits:
+Open Weather Map: 
+Weather Underground: 500/day (max 10/minute)
+
 ## Tests
 
 To run the unit test suite:

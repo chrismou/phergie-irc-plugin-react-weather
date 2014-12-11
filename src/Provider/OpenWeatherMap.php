@@ -50,6 +50,19 @@ class OpenWeatherMap implements WeatherProviderInterface
     }
 
     /**
+     * Validate the provided parameters
+     * The plugin requires at least one parameter (in most cases, this will be a location string)
+     *
+     * @param array $params
+     *
+     * @return true|false
+     */
+    public function validateParams(array $params)
+    {
+        return (count($params)) ? true : false;
+    }
+
+    /**
      * Returns an array of lines to send back to IRC when the http request is successful
      *
      * @param \Phergie\Irc\Plugin\React\Command\CommandEvent $event
@@ -100,5 +113,20 @@ class OpenWeatherMap implements WeatherProviderInterface
     public function getRejectLines(Event $event, $apiError)
     {
         return array('Something went wrong... ಠ_ಠ');
+    }
+
+    /**
+     * Returns an array of lines for the help response
+     *
+     * @return array
+     */
+    public function getHelpLines()
+    {
+        return array(
+            'Usage: weather [place] [country]',
+            '[place] - address, town, city, zip code, etc. Can be multiple words',
+            '[country] (optional) - can be a country code (uk, us, etc)',
+            'Instructs the bot to query OpenWeatherMap for weather info for the specified location'
+        );
     }
 }

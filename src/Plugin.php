@@ -59,19 +59,6 @@ class Plugin extends AbstractPlugin
     }
 
     /**
-     * Validate the provided parameters
-     * The plugin requires at least one parameter (in most cases, this will be a location string)
-     *
-     * @param array $params
-     *
-     * @return true|false
-     */
-    public function validateParams(array $params)
-    {
-        return (count($params)) ? true : false;
-    }
-
-    /**
      * Handler for the weather command
      *
      * @param \Phergie\Irc\Plugin\React\Command\CommandEvent $event
@@ -79,7 +66,7 @@ class Plugin extends AbstractPlugin
      */
     public function handleCommand(Event $event, Queue $queue)
     {
-        if ($this->validateParams($event->getCustomParams())) {
+        if ($this->provider->validateParams($event->getCustomParams())) {
             $request = $this->getApiRequest($event, $queue);
             $this->getEventEmitter()->emit('http.request', array($request));
         } else {
@@ -95,7 +82,7 @@ class Plugin extends AbstractPlugin
      */
     public function handleCommandHelp(Event $event, Queue $queue)
     {
-        $this->sendIrcResponse($event, $queue, $this->getHelpLines());
+        $this->sendIrcResponse($event, $queue, $this->provider->getHelpLines());
     }
 
     /**
@@ -156,17 +143,4 @@ class Plugin extends AbstractPlugin
         return $this->provider;
     }
 
-    /**
-     * Returns an array of lines for the help response
-     *
-     * @return array
-     */
-    public function getHelpLines()
-    {
-        return array(
-            'Usage: weather [location]',
-            '[location] - address, city, postcode, etc',
-            'Instructs the bot to query OpenWeatherMap for weather info for the specified location'
-        );
-    }
 }

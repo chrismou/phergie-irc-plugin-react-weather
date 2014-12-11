@@ -26,6 +26,16 @@ interface WeatherProviderInterface
     function getApiRequestUrl(CommandEvent $event);
 
     /**
+     * Validate the provided parameters
+     * The plugin requires at least one parameter (in most cases, this will be a location string)
+     *
+     * @param array $params
+     *
+     * @return true|false
+     */
+    public function validateParams(array $params);
+
+    /**
      * Returns an array of lines to send back to IRC when the http request is successful
      *
      * @param \Phergie\Irc\Plugin\React\Command\CommandEvent $event
@@ -54,4 +64,11 @@ interface WeatherProviderInterface
      * @return array
      */
     function getRejectLines(CommandEvent $event, $apiError);
+
+    /**
+     * Returns an array of lines for the help response
+     *
+     * @return array
+     */
+    public function getHelpLines();
 }
