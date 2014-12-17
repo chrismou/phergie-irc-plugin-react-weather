@@ -43,7 +43,7 @@ new \Chrismou\Phergie\Plugin\Weather\Plugin(array(
 ```
 
 There's also a Weather Underground provider included. It's a bit of a work in progress - it currently requires a city and country and tends to not find 
-the location as often - but it works.  If you think you can improve it, feel free to fork/fix/pull request or send me your suggestions and we'll take it from there. :-)
+the location as often - but it works.  If you think you can improve it, feel free to fork/fix/pull request or send me your suggestions. :-)
 
 Weather underground also requires an API key, which can you get for free from [here](http://www.wunderground.com/weather/api/)
 
