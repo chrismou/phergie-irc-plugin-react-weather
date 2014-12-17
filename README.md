@@ -3,6 +3,14 @@
 [Phergie](http://github.com/phergie/phergie-irc-bot-react/) plugin for returning weather information for a given location.
 
 [![Build Status](https://travis-ci.org/chrismou/phergie-irc-plugin-react-weather.svg)](https://travis-ci.org/chrismou/phergie-irc-plugin-react-weather)
+[![Code Climate](https://codeclimate.com/github/chrismou/phergie-irc-plugin-react-weather/badges/gpa.svg)](https://codeclimate.com/github/chrismou/phergie-irc-plugin-react-weather)
+[![Test Coverage](https://codeclimate.com/github/chrismou/phergie-irc-plugin-react-weather/badges/coverage.svg)](https://codeclimate.com/github/chrismou/phergie-irc-plugin-react-weather)
+
+## About
+This plugin provides a method for performing weather lookups for a specified town/city/zip code. OpenWeatherMap, the default provider, simply requires a location to search on,
+whereas the Wunderground provider requires a location and a country. Future providers may have similar inconsistencies, but if you're using the 
+[CommandHelp plugin](https://github.com/phergie/phergie-irc-plugin-react-commandhelp) you should always be able to find the correct syntax for your provider of choice by by running 
+"help weather" from within IRC.
 
 ## Install
 
@@ -21,8 +29,8 @@ See Phergie documentation for more information on
 
 ## Configuration
 
-The default provider is OpenWeatherSearch, which requires a free api key to use (which you can get from 
-[here](http://openweathermap.org/appid).
+The default provider is OpenWeatherSearch, which requires a free api key to use (you can get one from 
+[here](http://openweathermap.org/appid)).
 
 To use OpenWeatherMap, you only need to provide the API key:
 

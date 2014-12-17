@@ -40,8 +40,8 @@ class PluginTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->event = Phake::mock('Phergie\Irc\Plugin\React\Command\CommandEvent');
-        $this->queue = Phake::mock('Phergie\Irc\Bot\React\EventQueueInterface');
+        $this->event = $this->getMockEvent();
+        $this->queue = $this->getMockQueue();
     }
 
     /**
@@ -65,6 +65,9 @@ class PluginTest extends \PHPUnit_Framework_TestCase
         $this->doResolveNoResultsTest(file_get_contents(__DIR__.'/_data/OpenWeatherMapNoResults.json'), $httpConfig);
         $this->doRejectTest($httpConfig);
         $this->doCommandHelpTest();
+
+        // OpenWeatherMap requires at least 1 param
+        $this->doCommandInvalidParamsResponseTest(array());
     }
 
     /**
@@ -80,10 +83,14 @@ class PluginTest extends \PHPUnit_Framework_TestCase
         $this->doResolveNoResultsTest(file_get_contents(__DIR__.'/_data/WundergroundNoResults.json'), $httpConfig);
         $this->doRejectTest($httpConfig);
         $this->doCommandHelpTest();
+
+        // Wunderground requires at least 2 params so test both scenarios
+        $this->doCommandInvalidParamsResponseTest(array());
+        $this->doCommandInvalidParamsResponseTest(array("Leeds"));
     }
 
     /**
-     * Tests handCommand() is doing what it's supposed to
+     * Tests handleCommand() is doing what it's supposed to
      * @return array $httpConfig
      */
     protected function doCommandTest()
@@ -97,7 +104,7 @@ class PluginTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests handCommandHelp() is doing what it's supposed to
+     * Tests handleCommandHelp() is doing what it's supposed to
      */
     protected function doCommandHelpTest()
     {
@@ -112,6 +119,30 @@ class PluginTest extends \PHPUnit_Framework_TestCase
 
         foreach ((array)$helpLines as $responseLine) {
             Phake::verify($this->queue)->ircPrivmsg('#channel', $responseLine);
+        }
+    }
+
+    /**
+     * Tests handleCommand() returns the provider's help response if invalid params are supplied
+     *
+     * @param array $invalidParams
+     */
+    protected function doCommandInvalidParamsResponseTest(array $invalidParams=array())
+    {
+        // Grab a freshly mocked event/queue
+        $event = $this->getMockEvent();
+        $queue = $this->getMockQueue();
+
+        Phake::when($event)->getSource()->thenReturn('#channel');
+        Phake::when($event)->getCommand()->thenReturn('PRIVMSG');
+        Phake::when($event)->getCustomParams()->thenReturn($invalidParams);
+
+        $this->plugin->handleCommand($event, $queue);
+
+        $helpLines = $this->plugin->getProvider()->getHelpLines();
+
+        foreach ((array)$helpLines as $responseLine) {
+            Phake::verify($queue)->ircPrivmsg('#channel', $responseLine);
         }
     }
 
@@ -234,5 +265,13 @@ class PluginTest extends \PHPUnit_Framework_TestCase
         $plugin->setLogger(Phake::mock('\Psr\Log\LoggerInterface'));
 
         return $plugin;
+    }
+
+    protected function getMockEvent() {
+        return Phake::mock('Phergie\Irc\Plugin\React\Command\CommandEvent');
+    }
+
+    protected function getMockQueue() {
+        return Phake::mock('Phergie\Irc\Bot\React\EventQueueInterface');
     }
 }
