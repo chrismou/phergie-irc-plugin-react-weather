@@ -29,7 +29,7 @@ class PluginTest extends \PHPUnit_Framework_TestCase
     protected $plugin;
 
     /**
-     * @var \Phergie\Irc\Bot\React\EventQueueInterface
+     * @var \Phergie\Irc\Plugin\React\Command\CommandEvent
      */
     protected $event;
 
@@ -239,7 +239,7 @@ class PluginTest extends \PHPUnit_Framework_TestCase
         // Check we have an instance of the http plugin
         $this->assertInstanceOf('\WyriHaximus\Phergie\Plugin\Http\Request', $request);
 
-        // Check the url stored by htttp is the same as what we've called
+        // Check the url stored by http is the same as what we've called
         $this->assertSame($this->plugin->getProvider()->getApiRequestUrl($this->event), $request->getUrl());
 
         // Grab the response config and check the required callbacks exist
@@ -267,10 +267,20 @@ class PluginTest extends \PHPUnit_Framework_TestCase
         return $plugin;
     }
 
+    /**
+     * Returns a mock command event.
+     *
+     * @return \Phergie\Irc\Plugin\React\Command\CommandEvent
+     */
     protected function getMockEvent() {
         return Phake::mock('Phergie\Irc\Plugin\React\Command\CommandEvent');
     }
 
+    /**
+     * Returns a mock event queue.
+     *
+     * @return \Phergie\Irc\Bot\React\EventQueueInterface
+     */
     protected function getMockQueue() {
         return Phake::mock('Phergie\Irc\Bot\React\EventQueueInterface');
     }

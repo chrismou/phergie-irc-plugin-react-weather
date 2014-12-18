@@ -27,7 +27,6 @@ interface WeatherProviderInterface
 
     /**
      * Validate the provided parameters
-     * The plugin requires at least one parameter (in most cases, this will be a location string)
      *
      * @param array $params
      *
