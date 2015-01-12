@@ -99,7 +99,7 @@ class OpenWeatherMap implements WeatherProviderInterface
      */
     public function getNoResultsLines(Event $event, $apiResponse)
     {
-        return array('No weather found for this location');
+        return array('No weather data found for this location');
     }
 
     /**
@@ -125,7 +125,6 @@ class OpenWeatherMap implements WeatherProviderInterface
         return array(
             'Usage: weather [place] [country]',
             '[place] - address, town, city, zip code, etc. Can be multiple words',
-            '[country] (optional) - can be a full name or country code (uk, us, etc)',
             'Instructs the bot to query OpenWeatherMap for weather info for the specified location'
         );
     }

@@ -19,7 +19,7 @@ The recommended method of installation is [through composer](http://getcomposer.
 ```JSON
 {
     "require": {
-        "chrismou/phergie-irc-plugin-react-weather": "dev-master"
+        "chrismou/phergie-irc-plugin-react-weather": "~1"
     }
 }
 ```
@@ -45,7 +45,7 @@ new \Chrismou\Phergie\Plugin\Weather\Plugin(array(
 There's also a Weather Underground provider included. It's a bit of a work in progress - it currently requires a city and country and tends to not find 
 the location as often - but it works.  If you think you can improve it, feel free to fork/fix/pull request or send me your suggestions. :-)
 
-Weather underground also requires an API key, which can you get for free from [here](http://www.wunderground.com/weather/api/)
+Weather underground also requires an API key, which can you get for free from [here](http://www.wunderground.com/weather/api/).
 
 ```php
 new \Chrismou\Phergie\Plugin\Weather\Plugin(array(
@@ -55,7 +55,7 @@ new \Chrismou\Phergie\Plugin\Weather\Plugin(array(
 
 ))
 ```
-Or you can alway write your own! Feel free to fork, improve, and put in a pull request.
+Or you can alway write your own - feel free to fork and improve!
 
 #### Current request limits:
 * **Open Weather Map**: 4,000,000/day (max. 3000/min)
