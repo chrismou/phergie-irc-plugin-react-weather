@@ -25,9 +25,11 @@ class OpenWeatherMap implements WeatherProviderInterface
      */
     protected $appId = "";
 
-    public function __construct(array $config=array())
+    public function __construct(array $config = array())
     {
-        if (isset($config['appId'])) $this->appId = $config['appId'];
+        if (isset($config['appId'])) {
+            $this->appId = $config['appId'];
+        }
     }
 
     /**
@@ -75,16 +77,18 @@ class OpenWeatherMap implements WeatherProviderInterface
     {
         $data = json_decode($apiResponse);
         if (isset($data->name) && $data->name) {
-            return array(sprintf("%s, %s | %s | Temp: %dC | Humidity: %s%% | Sunrise: %s | Sunset: %s",
-                $data->name,
-                $data->sys->country,
-                $data->weather[0]->main,
-                round($data->main->temp - 273.15),
-                $data->main->humidity,
-                date("H:i:s", $data->sys->sunrise),
-                date("H:i:s", $data->sys->sunset)
-            ));
-
+            return array(
+                sprintf(
+                    "%s, %s | %s | Temp: %dC | Humidity: %s%% | Sunrise: %s | Sunset: %s",
+                    $data->name,
+                    $data->sys->country,
+                    $data->weather[0]->main,
+                    round($data->main->temp - 273.15),
+                    $data->main->humidity,
+                    date("H:i:s", $data->sys->sunrise),
+                    date("H:i:s", $data->sys->sunset)
+                )
+            );
         } else {
             return $this->getNoResultsLines($event, $apiResponse);
         }

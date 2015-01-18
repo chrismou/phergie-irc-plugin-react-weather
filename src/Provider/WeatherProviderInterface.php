@@ -17,7 +17,7 @@ interface WeatherProviderInterface
     /**
      * @param array $config
      */
-    public function __construct(array $config=array());
+    public function __construct(array $config = array());
 
     /**
      * Return the url for the API request

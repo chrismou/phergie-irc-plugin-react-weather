@@ -25,9 +25,11 @@ class Wunderground implements WeatherProviderInterface
      */
     protected $appId = "";
 
-    public function __construct(array $config=array())
+    public function __construct(array $config = array())
     {
-        if (isset($config['appId'])) $this->appId = $config['appId'];
+        if (isset($config['appId'])) {
+            $this->appId = $config['appId'];
+        }
     }
 
     /**
@@ -74,13 +76,16 @@ class Wunderground implements WeatherProviderInterface
         $data = json_decode($apiResponse);
         if (isset($data->current_observation)) {
             $data = $data->current_observation;
-            return array(sprintf("%s | %s | Temp: %dC | Humidity: %s | %s",
-                $data->display_location->full,
-                $data->weather,
-                round($data->temp_c),
-                $data->relative_humidity,
-                $data->forecast_url
-            ));
+            return array(
+                sprintf(
+                    "%s | %s | Temp: %dC | Humidity: %s | %s",
+                    $data->display_location->full,
+                    $data->weather,
+                    round($data->temp_c),
+                    $data->relative_humidity,
+                    $data->forecast_url
+                )
+            );
         } else {
             return $this->getNoResultsLines($event, $apiResponse);
         }
