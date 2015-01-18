@@ -40,9 +40,18 @@ class Plugin extends AbstractPlugin
      */
     public function __construct(array $config = array())
     {
-        $providerConfig = (isset($config['config'])) ? $config['config'] : array();
-        $provider = (isset($config['provider'])) ? $config['provider'] : 'Chrismou\Phergie\Plugin\Weather\Provider\OpenWeatherMap';
-        $this->provider = new $provider((is_array($providerConfig)) ? $providerConfig : array($providerConfig));
+        $providerConfig = array();
+        $provider = 'Chrismou\Phergie\Plugin\Weather\Provider\OpenWeatherMap';
+
+        if (isset($config['config'])) {
+            $providerConfig = (is_array($config['config'])) ? $config['config'] : array($config['config']);
+        }
+
+        if (isset($config['provider'])) {
+            $provider = $config['provider'];
+        }
+
+        $this->provider = new $provider($providerConfig);
     }
 
     /**
