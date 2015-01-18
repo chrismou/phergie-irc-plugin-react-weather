@@ -2,9 +2,9 @@
 
 [Phergie](http://github.com/phergie/phergie-irc-bot-react/) plugin for returning weather information for a given location.
 
-[![Build Status](https://travis-ci.org/chrismou/phergie-irc-plugin-react-weather.svg)](https://travis-ci.org/chrismou/phergie-irc-plugin-react-weather)
-[![Code Climate](https://codeclimate.com/github/chrismou/phergie-irc-plugin-react-weather/badges/gpa.svg)](https://codeclimate.com/github/chrismou/phergie-irc-plugin-react-weather)
-[![Test Coverage](https://codeclimate.com/github/chrismou/phergie-irc-plugin-react-weather/badges/coverage.svg)](https://codeclimate.com/github/chrismou/phergie-irc-plugin-react-weather)
+[![Build Status](https://scrutinizer-ci.com/g/chrismou/phergie-irc-plugin-react-weather/badges/build.png?b=master)](https://scrutinizer-ci.com/g/chrismou/phergie-irc-plugin-react-weather/build-status/master)
+[![Code Coverage](https://scrutinizer-ci.com/g/chrismou/phergie-irc-plugin-react-weather/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/chrismou/phergie-irc-plugin-react-weather/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/chrismou/phergie-irc-plugin-react-weather/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/chrismou/phergie-irc-plugin-react-weather/?branch=master)
 
 ## About
 This plugin provides a method for performing weather lookups for a specified town/city/zip code. OpenWeatherMap, the default provider, simply requires a location to search on,
