@@ -97,7 +97,7 @@ class Plugin extends AbstractPlugin
     {
         $self = $this;
         return new HttpRequest(array(
-            'url' => $this->provider->getApiRequestUrl($event, $queue),
+            'url' => $this->provider->getApiRequestUrl($event),
             'resolveCallback' => function ($data) use ($self, $event, $queue) {
                 $self->sendIrcResponse($event, $queue, $this->provider->getSuccessLines($event, $data));
             },
