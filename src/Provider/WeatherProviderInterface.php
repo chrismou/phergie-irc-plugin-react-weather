@@ -16,7 +16,6 @@ interface WeatherProviderInterface
 {
     /**
      * @param array $config
-     * @return void
      */
     public function __construct(array $config=array());
 
