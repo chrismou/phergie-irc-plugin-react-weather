@@ -14,23 +14,25 @@ use Phergie\Irc\Plugin\React\Command\CommandEvent;
 
 interface WeatherProviderInterface
 {
-    function __construct(array $config=array());
+    /**
+     * @param array $config
+     * @return void
+     */
+    public function __construct(array $config=array());
 
     /**
      * Return the url for the API request
      *
      * @param \Phergie\Irc\Plugin\React\Command\CommandEvent $event
-     *
      * @return string
      */
-    function getApiRequestUrl(CommandEvent $event);
+    public function getApiRequestUrl(CommandEvent $event);
 
     /**
      * Validate the provided parameters
      *
      * @param array $params
-     *
-     * @return true|false
+     * @return boolean
      */
     public function validateParams(array $params);
 
@@ -39,30 +41,27 @@ interface WeatherProviderInterface
      *
      * @param \Phergie\Irc\Plugin\React\Command\CommandEvent $event
      * @param string $apiResponse
-     *
      * @return array
      */
-    function getSuccessLines(CommandEvent $event, $apiResponse);
+    public function getSuccessLines(CommandEvent $event, $apiResponse);
 
     /**
      * Return an array of lines to send back to IRC when there are no results
      *
      * @param \Phergie\Irc\Plugin\React\Command\CommandEvent $event
      * @param string $apiResponse
-     *
      * @return array
      */
-    function getNoResultsLines(CommandEvent $event, $apiResponse);
+    public function getNoResultsLines(CommandEvent $event, $apiResponse);
 
     /**
      * Return an array of lines to send back to IRC when the request fails
      *
      * @param \Phergie\Irc\Plugin\React\Command\CommandEvent $event
      * @param string $apiError
-     *
      * @return array
      */
-    function getRejectLines(CommandEvent $event, $apiError);
+    public function getRejectLines(CommandEvent $event, $apiError);
 
     /**
      * Returns an array of lines for the help response

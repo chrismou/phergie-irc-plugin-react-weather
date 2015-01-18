@@ -25,7 +25,8 @@ class Wunderground implements WeatherProviderInterface
      */
     protected $appId = "";
 
-    function __construct(array $config=array()) {
+    public function __construct(array $config=array())
+    {
         if (isset($config['appId'])) $this->appId = $config['appId'];
     }
 
@@ -33,7 +34,6 @@ class Wunderground implements WeatherProviderInterface
      * Return the url for the API request
      *
      * @param \Phergie\Irc\Plugin\React\Command\CommandEvent $event
-     *
      * @return string
      */
     public function getApiRequestUrl(Event $event)
@@ -42,9 +42,9 @@ class Wunderground implements WeatherProviderInterface
 
         // TODO: This is awful. Needs a rethink
         // Final parameter should be the country
-        $country = $params[count($params)-1];
+        $country = $params[count($params) - 1];
         // Remove the final paramater
-        unset($params[count($params)-1]);
+        unset($params[count($params) - 1]);
         // Merge the remainder of the supplied params and remove disallowed punctuation
         $place = trim(implode("_", preg_replace('/[^\da-z\ ]/i', '', $params)));
         return sprintf("%s/%s/conditions/q/%s/%s.json", $this->apiUrl, $this->appId, $country, $place);
@@ -55,12 +55,11 @@ class Wunderground implements WeatherProviderInterface
      * The plugin requires at least one parameter (in most cases, this will be a location string)
      *
      * @param array $params
-     *
-     * @return true|false
+     * @return boolean
      */
     public function validateParams(array $params)
     {
-        return (count($params)>=2) ? true : false;
+        return (count($params) >= 2) ? true : false;
     }
 
     /**
@@ -68,7 +67,6 @@ class Wunderground implements WeatherProviderInterface
      *
      * @param \Phergie\Irc\Plugin\React\Command\CommandEvent $event
      * @param string $apiResponse
-     *
      * @return array
      */
     public function getSuccessLines(Event $event, $apiResponse)
@@ -93,7 +91,6 @@ class Wunderground implements WeatherProviderInterface
      *
      * @param \Phergie\Irc\Plugin\React\Command\CommandEvent $event
      * @param string $apiResponse
-     *
      * @return array
      */
     public function getNoResultsLines(Event $event, $apiResponse)
@@ -106,7 +103,6 @@ class Wunderground implements WeatherProviderInterface
      *
      * @param \Phergie\Irc\Plugin\React\Command\CommandEvent $event
      * @param string $apiError
-     *
      * @return array
      */
     public function getRejectLines(Event $event, $apiError)

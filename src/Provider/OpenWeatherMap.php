@@ -25,7 +25,8 @@ class OpenWeatherMap implements WeatherProviderInterface
      */
     protected $appId = "";
 
-    function __construct(array $config=array()) {
+    public function __construct(array $config=array())
+    {
         if (isset($config['appId'])) $this->appId = $config['appId'];
     }
 
@@ -55,7 +56,7 @@ class OpenWeatherMap implements WeatherProviderInterface
      *
      * @param array $params
      *
-     * @return true|false
+     * @return boolean
      */
     public function validateParams(array $params)
     {
@@ -78,7 +79,7 @@ class OpenWeatherMap implements WeatherProviderInterface
                 $data->name,
                 $data->sys->country,
                 $data->weather[0]->main,
-                round($data->main->temp-273.15),
+                round($data->main->temp - 273.15),
                 $data->main->humidity,
                 date("H:i:s", $data->sys->sunrise),
                 date("H:i:s", $data->sys->sunset)

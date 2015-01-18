@@ -42,7 +42,7 @@ class Plugin extends AbstractPlugin
     {
         $providerConfig = (isset($config['config'])) ? $config['config'] : array();
         $provider = (isset($config['provider'])) ? $config['provider'] : 'Chrismou\Phergie\Plugin\Weather\Provider\OpenWeatherMap';
-        $this->provider = new $provider((is_array($providerConfig))?$providerConfig:array($providerConfig));
+        $this->provider = new $provider((is_array($providerConfig)) ? $providerConfig : array($providerConfig));
     }
 
     /**
@@ -142,5 +142,4 @@ class Plugin extends AbstractPlugin
     {
         return $this->provider;
     }
-
 }
