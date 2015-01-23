@@ -15,3 +15,7 @@ script:
 after_script:
   - wget https://scrutinizer-ci.com/ocular.phar
   - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+
+notifications:
+  slack:
+    secure: yOg01dBH/CzzeGUAap1vwZg9hsGuRWnk0tG75SJlPnb6SDt+0lv7iU2Fxv89c3MYjFORAG2JbI4YF9ec8NccAdfqHHhzatWfs4se+AakhgnwfdvcCrnGxnhoDwRLSVNCKdzMBWuXD5uVZMBQTkklfVkBe3OFmHgLuGA/kpb5+kw=
