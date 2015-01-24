@@ -55,14 +55,15 @@ class PluginTest extends \PHPUnit_Framework_TestCase
     /**
      * Tests the end to end process using the OpenWeatherMap provider
      */
-    public function testOpenWeatherMap() {
+    public function testOpenWeatherMap()
+    {
         $this->plugin = $this->getPlugin(array(
             'provider' => 'Chrismou\\Phergie\\Plugin\\Weather\\Provider\\OpenWeatherMap',
             'config' => array('appId' => '')
         ));
         $httpConfig = $this->doCommandTest();
-        $this->doResolveTest(file_get_contents(__DIR__.'/_data/OpenWeatherMapResults.json'), $httpConfig);
-        $this->doResolveNoResultsTest(file_get_contents(__DIR__.'/_data/OpenWeatherMapNoResults.json'), $httpConfig);
+        $this->doResolveTest(file_get_contents(__DIR__ . '/_data/OpenWeatherMapResults.json'), $httpConfig);
+        $this->doResolveNoResultsTest(file_get_contents(__DIR__ . '/_data/OpenWeatherMapNoResults.json'), $httpConfig);
         $this->doRejectTest($httpConfig);
         $this->doCommandHelpTest();
 
@@ -73,14 +74,15 @@ class PluginTest extends \PHPUnit_Framework_TestCase
     /**
      * Tests the end to end process using the OpenWeatherMap provider
      */
-    public function testWunderground() {
+    public function testWunderground()
+    {
         $this->plugin = $this->getPlugin(array(
             "provider" => 'Chrismou\\Phergie\\Plugin\\Weather\\Provider\\Wunderground',
             "config" => array("appId" => '')
         ));
         $httpConfig = $this->doCommandTest();
-        $this->doResolveTest(file_get_contents(__DIR__.'/_data/WundergroundResults.json'), $httpConfig);
-        $this->doResolveNoResultsTest(file_get_contents(__DIR__.'/_data/WundergroundNoResults.json'), $httpConfig);
+        $this->doResolveTest(file_get_contents(__DIR__ . '/_data/WundergroundResults.json'), $httpConfig);
+        $this->doResolveNoResultsTest(file_get_contents(__DIR__ . '/_data/WundergroundNoResults.json'), $httpConfig);
         $this->doRejectTest($httpConfig);
         $this->doCommandHelpTest();
 
@@ -127,7 +129,7 @@ class PluginTest extends \PHPUnit_Framework_TestCase
      *
      * @param array $invalidParams
      */
-    protected function doCommandInvalidParamsResponseTest(array $invalidParams=array())
+    protected function doCommandInvalidParamsResponseTest(array $invalidParams = array())
     {
         // Grab a freshly mocked event/queue
         $event = $this->getMockEvent();
@@ -272,7 +274,8 @@ class PluginTest extends \PHPUnit_Framework_TestCase
      *
      * @return \Phergie\Irc\Plugin\React\Command\CommandEvent
      */
-    protected function getMockEvent() {
+    protected function getMockEvent()
+    {
         return Phake::mock('Phergie\Irc\Plugin\React\Command\CommandEvent');
     }
 
@@ -281,7 +284,8 @@ class PluginTest extends \PHPUnit_Framework_TestCase
      *
      * @return \Phergie\Irc\Bot\React\EventQueueInterface
      */
-    protected function getMockQueue() {
+    protected function getMockQueue()
+    {
         return Phake::mock('Phergie\Irc\Bot\React\EventQueueInterface');
     }
 }
