@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "cf90d87016e1484180e50c290078ac3e",
+    "hash": "53f500f4cdc04e83fdb31de9a9a9aec0",
     "packages": [
         {
             "name": "evenement/evenement",
@@ -1472,21 +1472,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/comparator.git",
-                "reference": "6a1e846331bb3cc1a305168125d047fb86260e3d"
+                "reference": "1dd8869519a225f7f2b9eb663e225298fade819e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/6a1e846331bb3cc1a305168125d047fb86260e3d",
-                "reference": "6a1e846331bb3cc1a305168125d047fb86260e3d",
+                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/1dd8869519a225f7f2b9eb663e225298fade819e",
+                "reference": "1dd8869519a225f7f2b9eb663e225298fade819e",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3",
-                "sebastian/diff": "~1.1",
-                "sebastian/exporter": "~1.0"
+                "sebastian/diff": "~1.2",
+                "sebastian/exporter": "~1.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.1"
+                "phpunit/phpunit": "~4.4"
             },
             "type": "library",
             "extra": {
@@ -1528,7 +1528,7 @@
                 "compare",
                 "equality"
             ],
-            "time": "2015-01-05 16:29:00"
+            "time": "2015-01-29 16:28:08"
         },
         {
             "name": "sebastian/diff",
@@ -1832,11 +1832,66 @@
             "description": "Symfony Yaml Component",
             "homepage": "http://symfony.com",
             "time": "2015-01-25 04:39:35"
+        },
+        {
+            "name": "vectorface/dunit",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Vectorface/dunit.git",
+                "reference": "b3b7de0d12e47406a0c1326baa5dba3a7d07af26"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Vectorface/dunit/zipball/b3b7de0d12e47406a0c1326baa5dba3a7d07af26",
+                "reference": "b3b7de0d12e47406a0c1326baa5dba3a7d07af26",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.3",
+                "symfony/console": "~2.5"
+            },
+            "bin": [
+                "bin/dunit"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Vectorface\\Dunit\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Daniel Bruce",
+                    "email": "dbruce@vectorface.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Cory Darby",
+                    "email": "ckdarby@vectorface.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Test code against multiple versions of PHP with the help of docker",
+            "homepage": "https://github.com/Vectorface/dunit",
+            "keywords": [
+                "docker",
+                "php",
+                "phpunit",
+                "testing"
+            ],
+            "time": "2015-01-07 15:33:36"
         }
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "vectorface/dunit": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
