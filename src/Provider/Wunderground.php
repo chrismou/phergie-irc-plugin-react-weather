@@ -4,7 +4,7 @@
  * OpenWeatherMap provider for the Weather plugin for Phergie
  *
  * @link https://github.com/chrismou/phergie-irc-plugin-react-weather for the canonical source repository
- * @copyright Copyright (c) 2014 Chris Chrisostomou (http://mou.me)
+ * @copyright Copyright (c) 2015 Chris Chrisostomou (https://mou.me)
  * @license http://phergie.org/license New BSD License
  * @package Chrismou\Phergie\Plugin\Weather
  */

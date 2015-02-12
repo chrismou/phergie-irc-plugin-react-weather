@@ -3,6 +3,14 @@
     "description": "Phergie plugin for returning weather information for a given location",
     "keywords": [ "phergie", "irc", "bot", "plugin" ],
     "license": "BSD-2-Clause",
+    "authors": [
+        {
+            "name": "Chris Chrisostomou",
+            "email": "dev@mou.me",
+            "homepage": "https://mou.me",
+            "role": "Developer"
+        }
+    ],
     "support": {
         "email": "dev@mou.me",
         "irc": "irc://irc.freenode.net/phergie",
@@ -17,9 +25,9 @@
 
     },
     "require-dev": {
-        "phpunit/phpunit": "4.1.*",
+        "phpunit/phpunit": "4.3.*",
         "phake/phake": "2.0.0-beta2",
-        "vectorface/dunit": "dev-master"
+        "vectorface/dunit": "~2"
     },
     "suggest": {
         "phergie/phergie-irc-plugin-react-commandhelp": "provides interactive help for commands",
