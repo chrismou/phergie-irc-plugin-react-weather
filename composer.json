@@ -17,7 +17,6 @@
         "issues": "https://github.com/chrismou/phergie-irc-plugin-react-weather/issues",
         "source": "https://github.com/chrismou/phergie-irc-plugin-react-weather"
     },
-    "minimum-stability": "dev",
     "require": {
         "phergie/phergie-irc-bot-react": "~1",
         "phergie/phergie-irc-plugin-react-command": "~1.0",
