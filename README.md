@@ -29,23 +29,36 @@ See Phergie documentation for more information on
 
 ## Configuration
 
-The default provider is OpenWeatherSearch, which requires a free api key to use (you can get one from 
-[here](http://openweathermap.org/appid)).
+This plugin requires the [Command plugin](https://github.com/phergie/phergie-irc-plugin-react-command) to recognise commands, and the
+[http plugin](https://github.com/WyriHaximus/PhergieHttp) to query Google for your search results.
 
-To use OpenWeatherMap, you only need to provide the API key:
+If you're new to Phergie or Phergie plugins, see the [Phergie setup instructions](https://github.com/phergie/phergie-irc-bot-react/wiki/Usage#configuration)
+for more information.  Otherwise, add the following references to your config file:
 
 ```php
-new \Chrismou\Phergie\Plugin\Weather\Plugin(array(
-
-    "config" => array("appid" => "YOUR_APP_ID")
-
-))
+return array(
+	// ...
+    'plugins' => array(
+		new \Phergie\Irc\Plugin\React\Command\Plugin,   // dependency
+		new \WyriHaximus\Phergie\Plugin\Dns\Plugin,     // dependency
+		new \WyriHaximus\Phergie\Plugin\Http\Plugin,    // dependency
+		new \Chrismou\Phergie\Plugin\Weather\Plugin(array(
+        
+            "config" => array("appid" => "YOUR_APP_ID")
+        
+        ))
+	)
+)
 ```
 
-There's also a Weather Underground provider included. It's a bit of a work in progress - it currently requires a city and country and tends to not find 
-the location as often - but it works.  If you think you can improve it, feel free to fork/fix/pull request or send me your suggestions. :-)
+The default provider is OpenWeatherSearch, which requires a free api key to use (you can get one from 
+[here](http://openweathermap.org/appid)).  To use OpenWeatherMap, you only need to provide the API key.
 
-Weather underground also requires an API key, which can you get for free from [here](http://www.wunderground.com/weather/api/).
+There's also a Weather Underground provider included. It's a bit of a work in progress - it currently requires a city and country and tends to not find 
+the location as often - but it does work.  If you think you can improve it, feel free to fork/fix/pull request or send me your suggestions. :)
+
+Weather underground also requires an API key, which can you get for free from [here](http://www.wunderground.com/weather/api/). You'll also need to
+specify you're using this provider in your Phergie config:
 
 ```php
 new \Chrismou\Phergie\Plugin\Weather\Plugin(array(
@@ -55,7 +68,7 @@ new \Chrismou\Phergie\Plugin\Weather\Plugin(array(
 
 ))
 ```
-Or you can alway write your own - feel free to fork and improve!
+Or if you know of any other weather services, you can write your own - feel free to fork and improve!
 
 #### Current request limits:
 * **Open Weather Map**: 4,000,000/day (max. 3000/min)
