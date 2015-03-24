@@ -44,7 +44,7 @@ return array(
 		new \WyriHaximus\Phergie\Plugin\Http\Plugin,    // dependency
 		new \Chrismou\Phergie\Plugin\Weather\Plugin(array(
         
-            "config" => array("appid" => "YOUR_APP_ID")
+            "config" => array("appId" => "YOUR_APP_ID")
         
         ))
 	)
@@ -64,7 +64,7 @@ specify you're using this provider in your Phergie config:
 new \Chrismou\Phergie\Plugin\Weather\Plugin(array(
 	
 	'provider' => 'Chrismou\\Phergie\\Plugin\\Weather\\Provider\\Wunderground',
-    "config" => array("appid" => "YOUR_APP_ID")
+    "config" => array("appId" => "YOUR_APP_ID")
 
 ))
 ```
