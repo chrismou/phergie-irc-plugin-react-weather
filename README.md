@@ -17,7 +17,7 @@ whereas the Wunderground provider requires a location and a country. Future prov
 The recommended method of installation is [through composer](http://getcomposer.org).
 
 ```JSON
-composer require chrismou/phergie-irc-plugin-react-weather": "~1"
+composer require chrismou/phergie-irc-plugin-react-weather
 ```
 
 See Phergie documentation for more information on
