@@ -13,7 +13,7 @@ namespace Chrismou\Phergie\Plugin\Weather;
 use Phergie\Irc\Bot\React\AbstractPlugin;
 use Phergie\Irc\Bot\React\EventQueueInterface as Queue;
 use Phergie\Irc\Plugin\React\Command\CommandEvent as Event;
-use WyriHaximus\Phergie\Plugin\Http\Request as HttpRequest;
+use Phergie\Plugin\Http\Request as HttpRequest;
 use Chrismou\Phergie\Plugin\Weather\Provider\WeatherProviderInterface;
 
 /**
@@ -100,7 +100,7 @@ class Plugin extends AbstractPlugin
      * @param \Phergie\Irc\Plugin\React\Command\CommandEvent $event
      * @param \Phergie\Irc\Bot\React\EventQueueInterface $queue
      *
-     * @return \WyriHaximus\Phergie\Plugin\Http\Request
+     * @return \Phergie\Plugin\Http\Request
      */
     protected function getApiRequest(Event $event, Queue $queue)
     {
