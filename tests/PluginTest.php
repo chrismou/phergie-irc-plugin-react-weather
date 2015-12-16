@@ -24,24 +24,30 @@ use Chrismou\Phergie\Plugin\Weather\Plugin;
 class PluginTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Chrismou\Phergie\Plugin\Weather\Plugin
+     * @var \Phake_IMock
      */
     protected $plugin;
 
     /**
-     * @var \Phergie\Irc\Plugin\React\Command\CommandEvent
+     * @var \Phake_IMock
      */
     protected $event;
 
     /**
-     * @var \Phergie\Irc\Bot\React\EventQueueInterface
+     * @var \Phake_IMock
      */
     protected $queue;
+
+    /**
+     * @var \Phake_IMock
+     */
+    protected $apiResponse;
 
     protected function setUp()
     {
         $this->event = $this->getMockEvent();
         $this->queue = $this->getMockQueue();
+        $this->apiResponse = Phake::mock('GuzzleHttp\Message\Response');
     }
 
     /**
@@ -216,8 +222,9 @@ class PluginTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInternalType('callable', $callback);
 
+        Phake::when($this->apiResponse)->getBody()->thenReturn($data);
         // Run the resolveCallback callback
-        $callback($data, $this->event, $this->queue);
+        $callback($this->apiResponse, $this->event, $this->queue);
 
         // Verify if each expected line was sent
         foreach ($responseLines as $responseLine) {
