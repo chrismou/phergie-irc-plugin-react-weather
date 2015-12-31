@@ -20,8 +20,8 @@
     "require": {
         "php": ">=5.5.0",
         "phergie/phergie-irc-bot-react": "<4.0",
-        "phergie/phergie-irc-plugin-react-command": "~1.0",
-        "phergie/phergie-irc-plugin-http": "~3.0"
+        "phergie/phergie-irc-plugin-react-command": "~2.0",
+        "phergie/phergie-irc-plugin-http": "~4.0"
 
     },
     "require-dev": {
@@ -30,9 +30,8 @@
         "squizlabs/php_codesniffer": "*",
         "vectorface/dunit": "^2",
         "codeclimate/php-test-reporter": "dev-master",
-        "phergie/phergie-irc-plugin-react-autojoin": "~1.1",
-        "phergie/phergie-irc-plugin-react-pong": "~1.1",
-        "phergie/phergie-irc-plugin-react-commandhelp": "~1.0"
+        "phergie/phergie-irc-plugin-react-autojoin": "~2.0",
+        "phergie/phergie-irc-plugin-react-commandhelp": "~2.0"
     },
     "suggest": {
         "phergie/phergie-irc-plugin-react-commandhelp": "provides interactive help for commands",
