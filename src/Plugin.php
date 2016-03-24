@@ -1,6 +1,6 @@
 <?php
 /**
- * Phergie plugin for returning weather information for a given location (https://github.com/chrismou/phergie-irc-plugin-react-weather)
+ * Phergie plugin for returning weather information for a given location
  *
  * @link https://github.com/chrismou/phergie-irc-plugin-react-weather for the canonical source repository
  * @copyright Copyright (c) 2016 Chris Chrisostomou (https://mou.me)
