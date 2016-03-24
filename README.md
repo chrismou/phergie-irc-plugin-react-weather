@@ -5,6 +5,7 @@
 [![Build Status](https://scrutinizer-ci.com/g/chrismou/phergie-irc-plugin-react-weather/badges/build.png?b=master)](https://scrutinizer-ci.com/g/chrismou/phergie-irc-plugin-react-weather/build-status/master)
 [![Test Coverage](https://codeclimate.com/github/chrismou/phergie-irc-plugin-react-weather/badges/coverage.svg)](https://codeclimate.com/github/chrismou/phergie-irc-plugin-react-weather/coverage)
 [![Code Climate](https://codeclimate.com/github/chrismou/phergie-irc-plugin-react-weather/badges/gpa.svg)](https://codeclimate.com/github/chrismou/phergie-irc-plugin-react-weather)
+[![Buy me a beer](https://img.shields.io/badge/donate-PayPal-019CDE.svg)](https://www.paypal.me/chrismou)
 
 ## About
 This plugin provides a method for performing weather lookups for a specified town/city/zip code. OpenWeatherMap, the default provider, simply requires a location to search on,
